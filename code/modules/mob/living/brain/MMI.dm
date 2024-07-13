@@ -9,7 +9,8 @@
 
 	//Revised. Brainmob is now contained directly within object of transfer. MMI in this case.
 	var/alien = 0
-	var/syndiemmi = FALSE //Whether or not this is a Syndicate MMI
+	var/hacked = FALSE //Whether or not this is a Syndicate MMI
+	var/clockwork = FALSE //If this is a soul vessel
 	var/mmi_item_name = "Man-Machine Interface" //Used to name the item when installing a brain
 	var/mob/living/brain/brainmob = null//The current occupant.
 	var/obj/item/organ/internal/brain/held_brain = null // This is so MMI's aren't brainscrubber 9000's
@@ -52,7 +53,7 @@
 			CRASH("[user] tried to stick a [O] into [src] in [get_area(src)], but the held brain variable wasn't cleared")
 		if(user.drop_item())
 			B.forceMove(src)
-			if(!syndiemmi)
+			if(!hacked)
 				visible_message("<span class='notice'>[user] sticks \a [O] into \the [src].</span>")
 			brainmob = B.brainmob
 			B.brainmob = null
@@ -64,6 +65,8 @@
 			// restore their ability to suicide.
 			brainmob.suiciding = FALSE
 			brainmob.see_invisible = initial(brainmob.see_invisible)
+			if(clockwork)
+				add_servant_of_ratvar(brainmob, TRUE)
 			GLOB.dead_mob_list -= brainmob//Update dem lists
 			GLOB.alive_mob_list += brainmob
 
@@ -301,7 +304,7 @@
 	desc = "The Syndicate's own brand of MMI. Mindslaves any brain inserted into it for as long as it's inside. Cyborgs, mechs, spiderbots, or IRCs made with this MMI will be slaved to the owner. Does not fit into NT AI cores. \
 	Cyborgs will appear to be linked to an AI (if present). If someone attempts to detonate the cyborg, it will automatically block the attempt and then disconnect from the AI. No emagged equipment is provided."
 	origin_tech = "biotech=4;programming=4;syndicate=2"
-	syndiemmi = TRUE
+	hacked = TRUE
 	mmi_item_name = "Syndicate Man-Machine Interface"
 	extended_desc = "Before the development of the mindslave implant by Cybersun, they first prototyped the technology using test subjects in MMIs. The unfettered access given to the user's brain made the task of delivering the memetic payloads trivial, allowing Cybersun's R&D to perfect their brainwashing techniques before moving on to a miniaturised implant. \
 	Whilst these specialty MMIs are rarely used owing to the far greater applicability and convenience of the mindslave implant, they do see occasional employment by undercover agents that wish to stealthily convert the AI-slaved cyborgs of Nanotrasen. \

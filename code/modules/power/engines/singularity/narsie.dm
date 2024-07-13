@@ -11,6 +11,7 @@
 	grav_pull = 5
 	consume_range = 6
 	gender = FEMALE
+	var/clashing = FALSE //If Nar-Sie is fighting Ratvar
 
 /obj/singularity/narsie/admin_investigate_setup()
 	return
@@ -66,6 +67,8 @@
 
 /obj/singularity/narsie/process()
 	eat()
+	if(clashing)
+		return 0
 	if(!target || prob(5))
 		pickcultist()
 	move()

@@ -110,3 +110,9 @@
 	var/last_taste_time
 	/// Stores a var of the last tast message we got. used so we don't spam people messages while they eat
 	var/last_taste_text
+
+	var/stun_absorption = FALSE //If all incoming stuns are being absorbed
+	var/stun_absorption_count = 0 //How many seconds of stun that have been absorbed
+
+	var/mob/living/mental_dominator //The person controlling the mind of this person, if applicable
+	var/mob/living/mind_control_holder/mind_control_holder //If the mob is being mind controlled, where their old mind is stored (check clock_mobs.dm)

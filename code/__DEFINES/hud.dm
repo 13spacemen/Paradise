@@ -57,6 +57,7 @@
 #define ANTAG_HUD_EVENTMISC 20
 #define ANTAG_HUD_BLOB 21
 #define ANTAG_HUD_ZOMBIE 22
+#define ANTAG_HUD_CLOCKWORK 23
 
 // Notification action types
 #define NOTIFY_JUMP "jump"

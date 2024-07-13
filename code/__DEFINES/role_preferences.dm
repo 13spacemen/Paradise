@@ -24,6 +24,7 @@
 #define ROLE_REVENANT			"revenant"
 #define ROLE_HOG_GOD			"hand of god: god" // We're prolly gonna port this one day or another
 #define ROLE_HOG_CULTIST		"hand of god: cultist"
+#define ROLE_SERVANT_OF_RATVAR	"servant of Ratvar"
 #define ROLE_TRADER				"trader"
 #define ROLE_VAMPIRE			"vampire"
 // Role tags for EVERYONE!
@@ -65,7 +66,8 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_TRAITOR = /datum/game_mode/traitor, 			// Traitor
 	ROLE_VAMPIRE = /datum/game_mode/vampire, 			// Vampire
 	ROLE_ALIEN, 										// Xenomorph
-	ROLE_WIZARD = /datum/game_mode/wizard 				// Wizard
+	ROLE_WIZARD = /datum/game_mode/wizard, 				// Wizard
+	ROLE_SERVANT_OF_RATVAR = /datum/game_mode/clockwork_cult,
 	// UNUSED/BROKEN ANTAGS
 //	ROLE_HOG_GOD = /datum/game_mode/hand_of_god,
 //	ROLE_HOG_CULTIST = /datum/game_mode/hand_of_god,
